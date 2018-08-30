@@ -1,12 +1,9 @@
 const express = require('express');
 const app = express();
+const morgan = require('morgan');
 
-
-
-app.use('/chest',(req, res, next )=>{
-    res.status(200).json({
-        message:"It works"
-    });
-});
+const chestRoutes = require('./api/routes/chest');
+app.use(morgan('dev'));
+app.use('/chest',chestRoutes );
 
 module.exports = app; 
